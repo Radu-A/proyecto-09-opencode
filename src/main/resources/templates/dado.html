@@ -1,0 +1,14 @@
+<th:block th:replace="~{layout :: layout(titulo='Dado', contenido=~{:: #contenido})}">
+    <div id="contenido">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">Resultado del Dado</h1>
+                    <p class="display-1 fw-bold text-primary" th:text="${numero}">?</p>
+                    <a th:href="@{/dado(caras=${caras})}" class="btn btn-primary mt-3">Tirar de nuevo</a>
+                    <a href="/" class="btn btn-secondary mt-3">Volver al inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>

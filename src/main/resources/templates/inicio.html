@@ -1,0 +1,34 @@
+<th:block th:replace="~{layout :: layout(titulo='Inicio', contenido=~{:: #contenido}, scripts=~{:: #scripts})}">
+    <div id="contenido">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">Bienvenido</h1>
+                    <p class="lead text-muted">Aplicación Spring MVC con Thymeleaf</p>
+                    <a href="/saludo/Mundo" class="btn btn-primary mt-3">Saludar a Mundo</a>
+                    <form action="/dado" method="get" class="d-flex justify-content-center align-items-center gap-2 mt-3">
+                        <label for="caras" class="form-label mb-0">Caras:</label>
+                        <input type="number" id="caras" name="caras" value="6" min="2" max="100" class="form-control w-auto">
+                        <button type="submit" class="btn btn-success">Jugar Dados</button>
+                    </form>
+                    <form id="saludoForm" class="d-flex justify-content-center align-items-center gap-2 mt-3">
+                        <label for="nombreInput" class="form-label mb-0">Nombre:</label>
+                        <input type="text" id="nombreInput" class="form-control w-auto" placeholder="Tu nombre" required>
+                        <button type="submit" class="btn btn-primary">Saludar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block id="scripts">
+        <script>
+            document.getElementById('saludoForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var nombre = document.getElementById('nombreInput').value.trim();
+                if (nombre) {
+                    window.location.href = '/saludo/' + encodeURIComponent(nombre);
+                }
+            });
+        </script>
+    </th:block>
+</th:block>
